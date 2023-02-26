@@ -36,6 +36,7 @@ export class AppStore {
 
     errorHandler(e: any) {
         console.log(e?.message || "Error");
+        console.log(e.stack);
         this.setAlert({
             open: true,
             message: e?.message || "Error",

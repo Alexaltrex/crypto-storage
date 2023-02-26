@@ -20,3 +20,5 @@ export const getContract = (provider: ethers.providers.Web3Provider) => (
 //========= GET CONTRACT ADDRESS =========//
 export const getContractAddress = () => process.env.NODE_ENV === "production" ? contractAddressProd.address : contractAddressDev.address
 
+//========= CHAIN ID =========//
+export const chainId = process.env.NODE_ENV === "production" ? 5 : 31337;

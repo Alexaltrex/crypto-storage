@@ -9,7 +9,8 @@ import {FormikHelpers} from "formik/dist/types";
 import {getDate} from "../../helpers/helpers";
 import {IEvent, IValues} from "../../types/types";
 import Typography from "@mui/material/Typography";
-import {getContract, getContractAddress, getProvider} from "../../helpers/ethers.helper";
+import {chainId, getContract, getContractAddress, getProvider} from "../../helpers/ethers.helper";
+import Link from "@mui/material/Link";
 
 export const Storage = observer(() => {
     const {
@@ -28,9 +29,14 @@ export const Storage = observer(() => {
         try {
             if (window.ethereum) {
                 const provider = getProvider();
-                const contract = getContract(provider);
-                const value = await contract.getValue();
-                setValue(value.toString());
+                const network = await provider.getNetwork();
+
+                // проверка совпадения сети в которой развернут смарт-контракт с той к которой подключились
+                if (network.chainId === chainId) {
+                    const contract = getContract(provider);
+                    const value = await contract.getValue();
+                    setValue(value.toString());
+                }
             }
         } catch (e: any) {
             errorHandler(e);
@@ -137,6 +143,17 @@ export const Storage = observer(() => {
                     <Typography className={style.address}>{getContractAddress()}</Typography>
                 </div>
 
+                <div className={style.addressBlock}>
+                    {/*<Typography className={style.label}>Etherscan</Typography>*/}
+                    <Link className={style.link}
+                          href="https://goerli.etherscan.io/address/0xBda254C68E684afB33e2f11CdC944Eb79DA29708"
+                          target="_blank"
+                    >
+                        Link to Etherscan
+                    </Link>
+
+                </div>
+
                 <div className={style.valueWrapper}>
                     <p className={style.label}>Value:</p>
                     <p className={style.value}>
@@ -173,10 +190,10 @@ export const Storage = observer(() => {
 
                 <div className={style.table}>
                     <div className={style.header}>
-                        <p>oldValue</p>
-                        <p>newValue</p>
-                        <p>timestamp</p>
-                        <p>address</p>
+                        <p>Old value</p>
+                        <p>New value</p>
+                        <p>Timestamp</p>
+                        <p>Address</p>
                     </div>
 
                     <div className={style.rows}>

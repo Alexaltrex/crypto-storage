@@ -15,6 +15,7 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import {useOutsideButNotOnTargetClick} from "../../hooks/useOutsideClick";
 import Jazzicon from "react-jazzicon";
 import StorageIcon from '@mui/icons-material/Storage';
+import {getProvider} from "../../helpers/ethers.helper";
 
 export const Header = observer(() => {
     const {
@@ -29,12 +30,9 @@ export const Header = observer(() => {
         }
     } = useStore();
 
-    //========= SET PROVIDER AND LISTENERS =========//
+    //========= ADD LISTENERS =========//
     useEffect(() => {
         if (window.ethereum) {
-            // 2 - определяем и устанавливаем провайдер
-            //const provider = new ethers.providers.Web3Provider(window.ethereum);
-            //setProvider(provider);
             window.ethereum.on('accountsChanged', accountChangeHandler);
             window.ethereum.on("chainChanged", chainChangedHandler);
             return () => {
@@ -59,9 +57,8 @@ export const Header = observer(() => {
 
     //========= GET BALANCE =========//
     const getBalance = async (newAccount: string) => {
-        console.log("getBalance");
         try {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const provider = getProvider();
             const balance = await provider.getBalance(newAccount);
             const balanceInWei = ethers.utils.formatUnits(balance, "wei");
             setBalance(ethers.utils.commify(balanceInWei))
@@ -78,6 +75,14 @@ export const Header = observer(() => {
             if (window.ethereum) {
                 try {
                     setConnecting(true);
+
+                    // 1 - при разработке переключаемся на сеть Hardhat
+                    if (process.env.NODE_ENV === "development") {
+                        await window.ethereum.request({
+                            method: 'wallet_switchEthereumChain',
+                            params: [{chainId: ethers.utils.hexValue(31337)}],
+                        });
+                    }
 
                     // 1 - на продакшене переключаемся на сеть Goerli
                     if (process.env.NODE_ENV === "production") {

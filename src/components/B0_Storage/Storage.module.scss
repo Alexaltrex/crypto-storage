@@ -20,6 +20,16 @@
   .addressBlock {
     margin-top: 24px;
 
+    .link {
+      display: block;
+      background: royalblue;
+      color: #FFF;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+
     .label {
       background: royalblue;
       color: #FFF;
@@ -37,7 +47,7 @@
   }
 
   .valueWrapper {
-    margin-top: 16px;
+    margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-radius: 4px;
@@ -61,7 +71,7 @@
   }
 
   .form {
-    margin-top: 16px;
+    margin-top: 24px;
 
 
     .btn {
