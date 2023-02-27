@@ -76,7 +76,7 @@ export const Header = observer(() => {
                 try {
                     setConnecting(true);
 
-                    // 1 - при разработке переключаемся на сеть Hardhat
+                    // при разработке переключаемся на сеть Hardhat
                     if (process.env.NODE_ENV === "development") {
                         await window.ethereum.request({
                             method: 'wallet_switchEthereumChain',
@@ -84,7 +84,7 @@ export const Header = observer(() => {
                         });
                     }
 
-                    // 1 - на продакшене переключаемся на сеть Goerli
+                    // на продакшене переключаемся на сеть Goerli
                     if (process.env.NODE_ENV === "production") {
                         await window.ethereum.request({
                             method: 'wallet_switchEthereumChain',

@@ -12,8 +12,11 @@
     border-radius: 16px;
     padding: 16px;
 
-    h2 {
-      text-decoration: underline;
+    .blockTitle {
+      background: #d32f2f;
+      color: #FFF;
+      padding: 4px 8px;
+      border-radius: 4px;
     }
   }
 
@@ -43,6 +46,31 @@
       box-sizing: border-box;
       border-radius: 0 0 4px 4px;
       border: 2px solid royalblue;
+    }
+  }
+
+  .etherscanBlock {
+    margin-top: 24px;
+    background: #ed6c02;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+      align-self: center;
+      width: 150px;
+      height: auto;
+      flex-grow: 0;
+    }
+
+    .link {
+      flex-shrink: 0;
+      display: block;
+      color: #FFF;
+      font-size: 20px;
+      text-decoration: none;
     }
   }
 
@@ -87,9 +115,18 @@
 
   .events {
     .table {
-      margin-top: 16px;
+      margin-top: 24px;
+
+      .tableLibel {
+        padding: 4px 8px;
+        background: #2e7d32;
+        color: #FFF;
+        box-sizing: border-box;
+        border-radius: 4px;
+      }
 
       .header {
+        margin-top: 4px;
         display: grid;
         grid-template-columns: 1fr 1fr 2fr 4fr;
         grid-column-gap: 4px;

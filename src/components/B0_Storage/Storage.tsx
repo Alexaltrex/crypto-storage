@@ -11,6 +11,7 @@ import {IEvent, IValues} from "../../types/types";
 import Typography from "@mui/material/Typography";
 import {chainId, getContract, getContractAddress, getProvider} from "../../helpers/ethers.helper";
 import Link from "@mui/material/Link";
+import {svgIcons} from "../../assets/svgIcons";
 
 export const Storage = observer(() => {
     const {
@@ -136,15 +137,17 @@ export const Storage = observer(() => {
     return (
         <div className={style.storage}>
             <div className={style.contract}>
-                <h2>Storage contract</h2>
+                <h2 className={style.blockTitle}>
+                    Storage contract
+                </h2>
 
                 <div className={style.addressBlock}>
                     <Typography className={style.label}>Contract address</Typography>
                     <Typography className={style.address}>{getContractAddress()}</Typography>
                 </div>
 
-                <div className={style.addressBlock}>
-                    {/*<Typography className={style.label}>Etherscan</Typography>*/}
+                <div className={style.etherscanBlock}>
+                    {svgIcons.etherscan}
                     <Link className={style.link}
                           href="https://goerli.etherscan.io/address/0xBda254C68E684afB33e2f11CdC944Eb79DA29708"
                           target="_blank"
@@ -186,9 +189,17 @@ export const Storage = observer(() => {
             </div>
 
             <div className={style.events}>
-                <h2>Event ValueChanged</h2>
+                <h2  className={style.blockTitle}>
+                    Event logs
+                </h2>
 
                 <div className={style.table}>
+
+                    <p className={style.tableLibel}>
+                        ValueChanged Event
+                    </p>
+
+
                     <div className={style.header}>
                         <p>Old value</p>
                         <p>New value</p>
