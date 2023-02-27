@@ -174,7 +174,7 @@ export const Header = observer(() => {
     return (
         <header className={style.header}>
             <div className={style.logoWrapper}>
-                <StorageIcon sx={{color: "#FFF"}}/>
+                <StorageIcon sx={{color: "#ff9800"}}/>
                 <p className={style.logo}>Storage dApp</p>
             </div>
 
