@@ -3,7 +3,7 @@ React frontend application interacting with smart contract in Ethereum Blockchai
 Smart contract allows anyone to get and change the value stored in it. 
 Any change in value generates an event "ValueChanged".
 
-<img src="https://user-images.githubusercontent.com/56224288/221402911-8646a5b1-9a7e-4b1c-8f38-454bc21e50b9.jpg" height="250">
+<img src="https://user-images.githubusercontent.com/56224288/221500375-f07f23df-7c61-42cd-a3f5-2fa08fda6de8.jpg" height="250">
 
 * Demo: https://alexaltrex.github.io/crypto-storage
 * Front-end: React
