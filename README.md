@@ -7,7 +7,8 @@ Any change in value generates an event "ValueChanged".
 
 * Demo: https://alexaltrex.github.io/crypto-storage
 * Front-end: React
-* Smart-contract: Solidity
+* Smart-contract: Solidity* 
 * Interaction between Front-end and Blockchain: ethers.js
 * Smart contract deployed in Goerli testnet
 * Etherscan: [link to contract](https://goerli.etherscan.io/address/0xBda254C68E684afB33e2f11CdC944Eb79DA29708)
+* Smart-contract address: 0xBda254C68E684afB33e2f11CdC944Eb79DA29708
